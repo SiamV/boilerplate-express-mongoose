@@ -1,0 +1,15 @@
+{
+  "name": "mongoose_express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
+  },
+"scripts": {
+    "start": "node server.js",
+    "build": "",
+    "test": ""
+  }
+}

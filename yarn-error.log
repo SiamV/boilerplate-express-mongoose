@@ -1,0 +1,37 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add mongodb
+
+PATH: 
+  C:\Program Files (x86)\Intel\TXE Components\TCS\;C:\Program Files\Intel\TXE Components\TCS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Users\Vitaly\AppData\Local\Microsoft\WindowsApps;;C:\Users\Vitaly\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Vitaly\AppData\Roaming\npm;C:\Users\Vitaly\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  14.3.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\Vitaly\Desktop\Learn-JS\React-JS\MongoDBConnect\package.json: Unexpected token S in JSON at position 91
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "connect_db",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+  S
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
