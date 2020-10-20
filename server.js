@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 //constants mongoDB. Use your real url or mongodb://127.0.0.1/nameDB to connect to DB
-const url = 'your url to connect'
+const url = 'mongodb+srv://adminDB:GJ7HncFNIHNkN6yQ@test1.wwbas.mongodb.net/test1'
 //connect to MongoDB
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(() =>{
     app.listen(8090, () => {
@@ -14,11 +17,11 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(
 
 const userSchema = new mongoose.Schema(
     {
-        "name": String,
-    }
+        "name": String
+    },{versionKey: false}
 )
 
-const User = mongoose.model('number1', userSchema);
+const User = mongoose.model('users', userSchema);
 
 app.get('/', (req, res) => {
     res.send('Hello server')
@@ -38,7 +41,7 @@ app.post("/v1/add/user", async (req, res) => {
 	const user = new User({
 		name: req.body.name
 	})
-	await user.save()
+	user.save()
 	res.send(user)
 })
 
@@ -51,13 +54,3 @@ app.delete("/v1/users/delete/:id", async (req, res) => {
 		res.send({ error: "User doesn't exist!" })
 	}
 })
-
-
-// router.post("/posts", async (req, res) => {
-// 	const post = new Post({
-// 		title: req.body.title,
-// 		content: req.body.content,
-// 	})
-// 	await post.save()
-// 	res.send(post)
-// })
