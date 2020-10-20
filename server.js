@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 //constants mongoDB. Use your real url or mongodb://127.0.0.1/nameDB to connect to DB
-const url = 'mongodb+srv://adminDB:GJ7HncFNIHNkN6yQ@test1.wwbas.mongodb.net/test1'
+const url = 'your url to connect'
 //connect to MongoDB
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(() =>{
     app.listen(8090, () => {
