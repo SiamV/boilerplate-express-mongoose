@@ -1,23 +1,38 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const config = require("./config");
 
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+
+const middleware = [
+    cors(),
+    // express.static(path.resolve(__dirname, './assets')),
+    bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }),
+    bodyParser.json({ limit: '50mb', extended: true }),
+  ]
+  
+  middleware.forEach((it) => app.use(it))
 
 //constants mongoDB. Use your real url or mongodb://127.0.0.1/nameDB to connect to DB
-const url = 'mongodb+srv://adminDB:GJ7HncFNIHNkN6yQ@test1.wwbas.mongodb.net/test1'
+const url = config.url;
 //connect to MongoDB
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(() =>{
-    app.listen(8090, () => {
+    app.listen(config.port, () => {
         console.log('server is working http://localhost:8090')
     });
 })
 
 const userSchema = new mongoose.Schema(
     {
-        "name": String
+        "id" : Number,
+        "first_name" : String,
+        "last_name" : String,
+        "avatar" : String,
+        "email" : String,
+        "occupation" : String,
+        "city" : String
     },{versionKey: false}
 )
 
@@ -39,7 +54,7 @@ app.get("/v1/users/:id", async (req, res) => {
 
 app.post("/v1/add/user", async (req, res) => {
 	const user = new User({
-		name: req.body.name
+		first_name: req.body.first_name
 	})
 	user.save()
 	res.send(user)
@@ -53,4 +68,4 @@ app.delete("/v1/users/delete/:id", async (req, res) => {
 		res.status(404)
 		res.send({ error: "User doesn't exist!" })
 	}
-})
+}) 
