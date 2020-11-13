@@ -1,8 +1,8 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const config = require("./config");
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import config from "./config.js";
 
 const app = express();
 
@@ -20,7 +20,7 @@ const url = config.url;
 //connect to MongoDB
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(() =>{
     app.listen(config.port, () => {
-        console.log('server is working http://localhost:8090')
+        console.log(`server is working http://localhost:${config.port}`)
     });
 })
 

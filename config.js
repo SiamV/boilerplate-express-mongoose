@@ -1,6 +1,6 @@
 const config = {
-    port: 8090,
-    url: 'your url to connect mongoDB'
+    port: 8087,
+    url: 'mongodb://localhost:27017/test1'
   }
   
-  module.exports = config;
+  export default config;
